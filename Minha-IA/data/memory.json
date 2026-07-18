@@ -1,3 +1,6 @@
 {
-    "usuario": "kelvi"
+    "usuario": "kelvi",
+    "conhecimento": {
+        "gosto": "fisica"
+    }
 }
