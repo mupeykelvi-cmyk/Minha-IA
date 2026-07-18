@@ -1,14 +1,21 @@
-print("Olá! Eu sou uma IA simples.")
+nome_ia = "Aurora"
+
+print(f"Olá! Eu sou {nome_ia}, uma IA simples.")
+
+nome_usuario = input("Qual é o seu nome? ")
+
+print(f"Prazer em conhecer você, {nome_usuario}!")
 
 while True:
-    pergunta = input("Você: ")
+    pergunta = input(f"{nome_usuario}: ")
 
     if pergunta.lower() == "olá":
-        print("IA: Olá! Como posso ajudar?")
+        print(f"{nome_ia}: Olá, {nome_usuario}! Como posso ajudar?")
 
     elif pergunta.lower() == "sair":
-        print("IA: Até logo!")
+        print(f"{nome_ia}: Até logo, {nome_usuario}!")
         break
 
     else:
-        print("IA: Ainda estou aprendendo.")
+        print(f"{nome_ia}: Ainda estou aprendendo.")
+
