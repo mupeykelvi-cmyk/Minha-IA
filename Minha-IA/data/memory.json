@@ -2,6 +2,7 @@
     "usuario": "kelvi",
     "conhecimento": {
         "gosto": "fisica",
-        "planeta favorito": "marte"
+        "planeta favorito": "marte",
+        "qual": "o planeta favorito"
     }
 }

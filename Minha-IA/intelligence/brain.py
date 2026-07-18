@@ -1,11 +1,16 @@
 from data.memory import aprender, lembrar
+from intelligence.nlp import normalizar_texto
+from intelligence.intent import identificar_intencao
 
 
 def responder(mensagem, memoria):
 
-    texto = mensagem.lower()
+    texto = normalizar_texto(mensagem)
 
-    if texto.startswith("meu ") and " é " in texto:
+    intencao = identificar_intencao(texto)
+
+
+    if intencao == "aprender":
 
         partes = texto.replace("meu ", "").split(" é ")
 
@@ -17,14 +22,11 @@ def responder(mensagem, memoria):
         return f"Vou lembrar que seu {chave} é {valor}."
 
 
-    if "qual" in texto and "meu" in texto:
+    elif intencao == "lembrar":
 
         chave = texto
-
         chave = chave.replace("qual é o meu ", "")
-        chave = chave.replace("qual é meu ", "")
         chave = chave.replace("qual meu ", "")
-        chave = chave.replace("qual éo meu ", "")
         chave = chave.replace("?", "")
         chave = chave.strip()
 
@@ -33,19 +35,19 @@ def responder(mensagem, memoria):
         if valor:
             return f"Seu {chave} é {valor}."
 
-        return f"Ainda não sei qual é seu {chave}."
+        return "Ainda não sei essa informação."
 
 
-    if "nome" in texto:
-        return "Meu nome é Aurora AI."
+    elif intencao == "saudacao":
 
-
-    if "quem sou eu" in texto:
-        return f"Você é {memoria.get('usuario')}."
-
-
-    if "olá" in texto or "ola" in texto:
         return f"Olá, {memoria.get('usuario')}!"
 
 
-    return "Ainda estou aprendendo essa informação."
+    elif intencao == "identidade":
+
+        return f"Você é {memoria.get('usuario')}."
+
+
+    else:
+
+        return "Ainda estou aprendendo essa informação."
