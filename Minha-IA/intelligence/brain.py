@@ -1,4 +1,4 @@
-from core.memory import aprender, lembrar
+from data.memory import aprender, lembrar
 
 
 def responder(mensagem, memoria):
